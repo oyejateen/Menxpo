@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- HTML Meta Tags -->
+  <title>Bro Codes</title>
+  <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/944940907868848209/1059696169313382491/fav0.jpeg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-QP0x87pUa7V+5Dp/5NL1f/ZGZB+7ZMkKX0oJfNQ+1/xEvqyDDKiBVTcaSSw+7V4kj4kFQZcUOC9XfjgVU5S6Ug==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-/1IOZ5/pz+ze9zI424JtmCjvFkPhdbWlTOz5GELpzKtuXYpG8Z1a/KX9JQVn8oNv" crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js" integrity="sha512-BTswEiqKvnp8qZi9bt9JJLx/QROtRv0nWljK86+ucnmwN1DhRz0oY7sPxI11jLfvNCmx9C9iDjS67R6h8x6WfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+ <link rel="stylesheet" href="style.css" type="text/css"/>
+
+  <style>
+        body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-height: 100vh;
+      overflow: auto;
+    }
+    .card {
+      background-color: aliceblue;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      width: 70%;
+      max-height: 100%;
+      padding: 20px;
+      margin: 20px auto; /* Updated margin to center the card */
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+    }
+    .card li {
+      padding: 10px;
+      font-size: 14px;
+      margin: 10px 0;
+      border-radius: 4px;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+    .card li:hover {
+      transform: scale(1.1);
+      margin: 10px 0;
+    }
+    header {
+      margin: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+    }
+    header i {
+      color: white;
+      float: left;
+    }
+    .share-icon {
+      position: absolute;
+      top: 25px;
+      left: 10px;
+      z-index: 9999;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5em;
+      color: white;
+      flex-grow: 1;
+      text-align: center;
+    }
+    a {
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      color: white;
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 30px;
+      background-color: #333;
+      padding: 20px 0;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* Changed from 'space-between' to 'flex-start' */
+      align-items: center;
+      overflow-y: auto; /* Added overflow-y property for vertical scrolling */
+    }
+    footer a {
+      color: white;
+      font-size: 14px;
+      margin: 5px 0;
+      line-height: 1;
+      display: block;
+    }
+    footer a:hover {
+      color: lightgray;
+    }
+    /*li.hovered {
+      transform: scale(1.1);
+    }*/
+    .highlighted {
+      margin: 10px 0;
+      border: 1px lightgray;
+      transform: scale(1.1);
+    }
+    .instruction-card {
+      color: white;
+      background-color: aliceblue;
+      padding: 20px;
+      border-radius: 6px;
+      width: 70%;
+      max-height: 100%;
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .instruction-card h2 {
+      colour: black;
+      margin: 0 0 10px 0;
+    }
+    .instruction-card ul {
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      text-align: left;
+    }
+    .instruction-card li {
+      padding: 10px;
+      font-size: 14px;
+      margin: 10px 0;
+      color: black;
+      border-radius: 4px;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+    .instruction-card button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      margin: 10px 0;
+      color: black;
+      border-radius: 4px;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+    .div-write {
+      color: white;
+      background-color: aliceblue;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin: 10px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .add-codes {
+      display: block;
+      justify-content: center;
+      padding: 10px;
+      margin: 10px 0;
+      color: black;
+      border-radius: 4px;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+    .delete-button {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px 0 white;
+      transition: transform 0.3s;
+      color: white;
+      background-color: red;
+      width: 100%;
+    }
+    .add-form {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f8f9fa;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .add-form input {
+      width: 90%;
+      height: 100px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+    }
+    .add-form textarea {
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 80%;
+      height: 100px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px;
+      max-width: 100%;
+    }
+
+    .input-group input {
+      flex: 1;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .button-row button {
+      margin-left: 5px;
+      }
+    .checkbox-label {
+      margin-left: 10px;
+      font-size: 14px;
+      color: black;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <header id="title">
+      <i class="fas fa-share share-icon"></i>
+      <h1><b>Bro Codes 💀</b></h1>
+    </header>
+    <div style="background-color:aliceblue;" id="instructions" class="instruction-card">
+      <h2 style="color:black;">Welcome to Bro Codes!</h2>
+      <h3 style="color:black; text-decoration: underline; text-decoration-color:red;">Preamble of Bro Code:</h3>
+      <ul>
+        <li>The Bro Code is a set of rules that guide bros in maintaining a strong bond based on trust, loyalty, and respect.</li>
+        <li>It establishes guidelines for bro behavior, emphasizing honesty, respecting boundaries, and fostering a supportive environment.</li>
+        <li>Bros are expected to keep secrets, protect reputations, and support each other unconditionally.</li>
+        <li>It creates a network of camaraderie, trust, and respect, fostering lifelong bonds among bros.</li>
+        <li>The Bro Code serves as a code of conduct that strengthens friendships.</li>
+      
+      </ul>
+      <h3 style="color:black; text-decoration: underline; text-decoration-color:red;">How to use</h3>
+      <ul>
+        <li>Long press to share: Share a relevant Bro Code by long pressing on it, passing on wisdom to your bros.</li>
+        <li>Remember and Share: Keep the Bro Code in mind and spread awareness among your bros, promoting strong friendships.</li>
+        <li>Know the Bro Code: Understand the unwritten rules of bro behavior, emphasizing trust, loyalty, and respect.</li>
+        <li>Exclusive sharing: Share the Bro Code only with trusted bros who understand and respect its significance.</li>
+        <li>Embrace values: Incorporate trust, loyalty, and respect into your actions, being a reliable bro.</li>
+        <li>Reflect and discuss: Ponder the Bro Code's principles and discuss them with bros, fostering meaningful conversations.</li>
+      </ul>
+      <div class="checkbox-container">
+        <input type="checkbox" id="authCheckbox" required>
+        <label class="checkbox-label" for="authCheckbox">I take an oath that I will follow the bro code till my last breath.</label>
+      </div>
+      <div class="checkbox-container">
+        <input type="checkbox" id="authCheckbox1" required>
+        <label class="checkbox-label" for="authCheckbox1">I take an oath that I will only share this generational wealth with bros only.</label>
+      </div>
+      <button id="close-instructions-btn" class="btn">Next</button>
+    </div>
+    <div class="card">
+      <ul>
+        <li id="code1">1: Have your bro's back, no matter what. You're no friend if you cannot watch out for him.</li>
+        <li id="code2">2: If his parents/girlfriend asks you about where he is, you know nothing – nothing at all. Keep his whereabouts to yourself, hang up and warn him.</li>
+        <li id="code3">3: If your buddy assigns you as his wingman at a party, make him proud by doing your job well. He hooking up with the girl he is eyeing is your responsibility. Get on it right away.</li>
+        <li id="code4">4: You must do all you can to save your bro from dating an ugly girl. Chances are that he is too drunk to even make out if that person is a girl or a guy. If you're sure he's sober, then that means you can shrug off all responsibility and try your own luck with hotter women around.</li>
+        <li id="code5">5: There are four things about your bro that you must respect in all conditions – his house, his parents, his girlfriend and most important of all, his car.</li>
+        <li id="code6">6: You just cannot get involved with your bro's sisters. It is one of the biggest violations of the bro code.</li>
+        <li id="code7">7: If your bro asks you about your opinion of his new date, you are supposed to give an honest answer. If you don't like her, tell him. Just make sure you're not saying, “I want her in my bed right now!”</li>
+        <li id="code8">8: You must never leave your bro alone without any ride. No matter how much you want to get laid, there is no way you are letting him walk more than three blocks.</li>
+        <li id="code9">9: A bro shall never make a bro feel ashamed. Even if he just hooked up with the most hideous girl ever, you're supposed to make excuses on his behalf. Of course it wasn't him, it was the alcohol.</li>
+        <li id="code10">10: You will do whatever it takes to make your bro look like a superhero in front of others. If he is bad at a certain sport you're playing, you play weak and save his image.</li>
+        <li id="code11">11: A wingman is never supposed to put his bro down in front of the girl. If the wingman makes the man look bad in front of the target, other bros are totally entitled to bash him up later.</li>
+        <li id="code12">12: The bro code permits the entry of a girl as the new bro only if she proves to be worthy of the honour and by common concession, of course.</li>
+        <li id="code13">13: Even if a girl manages to enter the bro gang, you shall never reveal the bro code to her. You may treat her as one amongst you but never disclose any rule until she wins your trust completely. She could be an undercover agent for all you know.</li>
+        <li id="code14">14: A bro is never allowed to drive in a drunken state. An exception can be made in the case of a bro who has acquired masters in the art of drunken driving. If a sloshed bro needs to be sent back home, arrangements shall be made for the same at any cost. Stealing others' car keys is allowed if necessary.</li>
+        <li id="code15">15: Anything a bro does in a drunken state is justified. Everything is forgiven for him. You shall make excuses for him whenever required, for he shall do the same when the time comes.</li>
+        <li id="code16">16: A bro shall never allow another bro to text a girl when drunk. In case his girlfriend calls when he is drunk, the phone shall be kept in the custody of someone sober until the bro comes back to senses.</li>
+        <li id="code17">17: In the absence of your bro, you are his girlfriend's protector. You shall ride her to wherever she wants and keep her safe.</li>
+        <li id="code18">18: A bro shall never describe his sexual encounter in explicit detail to any of his bros. This might lead to them imaging him naked which is forbidden by the bro code.</li>
+        <li id="code19">19: A bro always advices his bro with the best tips to approach a girl. It is a bro's duty to encourage his bro to become an Alpha-Bro.</li>
+        <li id="code20">20: Never sleep with a bro's ex-girlfriend. If you are attracted to your bro's ex, you shall not make a pass at her without taking his permission. If he wants you to stay away from her, you shall abide by his request.</li>
+        <li id="code21">21: If you get involved with a bro's ex, with his permission of course, you shall never rub it in his face. Remember that it was the girl's choice to date you and it has nothing to do with you being a better charmer than your bro.</li>
+        <li id="code22">22: A bro always looks after another bro if he blacks out. He shall also tell him all that happened last night, however much bad it may be. Bros trust each other with their life, and it shall not be broken.</li>
+        <li id="code23">23: A bro shall never let another bro get his girlfriend's name tattooed. Enough said.</li>
+        <li id="code24">24: Celebrate your bromance. If anybody, especially a girl looks down upon it, shoot her. They're just jealous because they'll never know what being a part of a bro code means.</li>
+        <li id="code25">25: The fist bump is a form of appreciation. You shall use it to show acceptance, appreciation or a go-for-it. Use this weapon often to have your bros know that you're on their side.</li>
+        <li id="code26">26: If your bro is broke, the bro code demands you to treat him. In no case shall he be left hungry, or homeless.</li>
+        <li id="code27">27: A bro shall always be forgiven. Bros are for life, there is nothing a bro can do to deserve hatred. Unless he gets involved with your girlfriend. In that case, punch him in the face.</li>
+        <li id="code28">28: If a bro is unable to pitch him money for beer, other bros shall cover him. He shall not be deprived of the holy potion.</li>
+        <li id="code29">29: Never hit a bro in the nuts, not even while goofing around. The bro code condemns such acts.</li>
+        
+      </ul>
+    </div>
+    <div class="div-write" style="width:70%;">
+      <div id="add-codes" class="add-codes" style="width: 60%;">
+        <p class="add-codes-head">Write some more Bro Codes &nbsp<i class="fas fa-pen"></i></p>
+        <form class="add-form" id="addForm" method="post" action="/codes">
+          <div id="textareaContainer">
+        <textarea class="form-control" name="broCode" rows="2" placeholder="Enter your new Bro Code"></textarea>
+          </div>
+          <div id="textareabuttonContainer">
+          </div>
+        <!--<button style="color:white; background-color:black; width: 100%;" class="add-codes" type="button" onclick="addMore()">Add More</button>-->
+        <div class="input-group">
+          <input class="form-control" type="email" name="email" placeholder="Your Email" required>
+          <input type="text" name="github" placeholder="GitHub Profile (optional)">
+          <input class="form-control" type="text" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="button-row">
+         
+          <button style="color:white; background-color:black; width: 100%;" class="add-codes" type="submit" onclick="alert('It may take some time to be visible to all bros as Mods will review your request. Hit Jatin on Instagram for a quick response.')">Submit</button>
+        </div>
+      </form>
+      <p id="note" style="display: none;">The Bro Code is saved on your device. It may take some time to be visible to all bros as Mods will review your request. Hit Jatin on Instagram for a quick response.</p>
+    </div>
+    </div>
+    <div class="bottom-footer" style="display:flex; width:200px;height:200;align-content:center;"><a href="/" style="text-decoration:none;color:white;"><img style="align-self:center; max-width:200px;" src="https://media.discordapp.net/attachments/1143947245436284959/1145560287123099679/Picsart_23-08-28_08-57-17-895.png" alt="menxpo logo"/></a></div>
+  </div>
+  
+  <footer id="foooter">
+    <a href="#code1">1</a>
+    <a href="#code2">2</a>
+    <a href="#code3">3</a>
+    <a href="#code4">4</a>
+    <a href="#code5">5</a>
+    <a href="#code6">6</a>
+    <a href="#code7">7</a>
+    <a href="#code8">8</a>
+    <a href="#code9">9</a>
+    <a href="#code10">10</a>
+    <a href="#code11">11</a>
+    <a href="#code12">12</a>
+    <a href="#code13">13</a>
+    <a href="#code14">14</a>
+    <a href="#code15">15</a>
+    <a href="#code16">16</a>
+    <a href="#code17">17</a>
+    <a href="#code18">18</a>
+    <a href="#code19">19</a>
+    <a href="#code20">20</a>
+    <a href="#code21">21</a>
+    <a href="#code22">22</a>
+    <a href="#code23">23</a>
+    <a href="#code24">24</a>
+    <a href="#code25">25</a>
+    <a href="#code26">26</a>
+    <a href="#code27">27</a>
+    <a href="#code28">28</a>
+    <a href="#code29">29</a>
+    <a href="#code30">30</a>
+  </footer>
+  <script>
+        const lis = document.querySelectorAll("li");
+
+    // Add event listener to each li element
+    lis.forEach((li) => {
+      li.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        const number = event.target.textContent.split(":")[0].trim();
+        navigator.share({
+          title: "Code Snippet",
+          text: event.target.textContent.trim(),
+          url: `https://jatinxd.tk/codes#code${number}`,
+        });
+      });
+    });
+
+    const footerLinks = document.querySelectorAll("footer a");
+
+    footerLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        window.location.href = link.href; // Scroll to the corresponding code
+
+        // Remove the "highlighted" class from all list items
+        lis.forEach((li) => {
+          li.classList.remove("hovered");
+        });
+
+        targetElement.classList.add("hovered");
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!target.closest("li") && !target.closest("footer a")) {
+        lis.forEach((li) => {
+          li.classList.remove("hovered");
+        });
+      }
+    });
+
+    const shareIcon = document.querySelector(".share-icon");
+
+    shareIcon.addEventListener("click", () => {
+      navigator.share({
+        title: "Code Snippet",
+        text: "Bro Codes 💀",
+        url: "https://jatinxd.tk/codes",
+      })
+        .then(() => console.log("Share successful"))
+        .catch((error) => console.error("Error sharing:", error));
+    });
+
+    const instructionsDiv = document.getElementById('instructions');
+    const title = document.getElementById('foooter');
+    const header = document.getElementById('title');
+    const closeInstructionsBtn = document.getElementById('close-instructions-btn');
+    const moodCardContainerDiv = document.querySelector('.card');
+
+    const isFirstTimeUser = !document.cookie.includes('hasVisited');
+    if (isFirstTimeUser) {
+      instructionsDiv.style.display = 'flex';
+      moodCardContainerDiv.style.display = 'none';
+      title.style.display = "none";
+      header.style.display = "none";
+      document.querySelector('.div-write').style.display = "none";
+    } else {
+      instructionsDiv.style.display = 'none';
+      moodCardContainerDiv.style.display = 'flex';
+      title.style.display = "flex";
+      header.style.display = "flex";
+      document.querySelector('.div-write').style.display = "flex";
+    }
+
+    closeInstructionsBtn.addEventListener('click', () => {
+  instructionsDiv.style.display = 'none';
+  moodCardContainerDiv.style.display = 'flex';
+  title.style.display = "flex";
+  header.style.display = "flex";
+document.querySelector('.div-write').style.display = "flex";
+
+  const expiryDate = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000)); // 30 days from now
+  document.cookie = `hasVisited=true; expires=${expiryDate.toUTCString()}; path=/;`;
+
+  // Scroll to the header
+  header.scrollIntoView({ behavior: 'smooth' });
+});
+document.querySelector('.add-codes-head').addEventListener("click", () => {
+  if (document.getElementById('addForm').style.display === 'block') {
+  document.getElementById('addForm').style.display = "none";
+  const writeCode = document.querySelector('.add-codes-head');
+    writeCode.innerHTML = 'Write some more Bro Codes &nbsp<i class="fas fa-pen"></i>'
+    
+  } else {
+    toggleAddForm();
+  }
+})
+    function toggleAddForm() {
+      const addForm = document.getElementById('addForm');
+      const writeCode = document.querySelector('.add-codes-head');
+      const note = document.getElementById('note');
+      writeCode.innerHTML = 'Write some more Bro Codes &nbsp<i class="fas fa-angle-down"></i>'
+      addForm.style.display = 'block';
+      note.style.display = 'none';
+    }
+function addMore() {
+  const textareaContainer = document.getElementById('textareaContainer');
+  const textareas = textareaContainer.querySelectorAll('textarea');
+
+  const newTextarea = document.createElement('textarea');
+  newTextarea.className = 'form-control';
+  newTextarea.name = 'broCode';
+  newTextarea.rows = '2';
+  newTextarea.style = 'max-width:90%';
+  newTextarea.placeholder = 'Enter your new Bro Code';
+
+  textareaContainer.appendChild(newTextarea);
+
+  if (textareas.length > 1) {
+    let deleteButton = document.getElementById('deleteButton');
+    if (!deleteButton) {
+      deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.className = 'delete-button';
+      deleteButton.id = 'deleteButton';
+      deleteButton.addEventListener('click', function() {
+        textareaContainer.removeChild(textareaContainer.lastChild);
+        if (textareas.length === 2) {
+          deleteButton.remove();
+        }
+      });
+      textareaContainer.parentElement.appendChild(deleteButton);
+    }
+  }
+}
+
+
+  </script>
+</body>
+</html>
